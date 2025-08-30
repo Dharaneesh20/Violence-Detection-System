@@ -56,12 +56,6 @@
 - **Motion Analysis**: Optical flow and frame difference detection
 - **Pattern Recognition**: Advanced violence pattern identification
 
-## 🎬 Demo
-
-| Live Detection | Upload Analysis |
-|:---:|:---:|
-| ![Live Detection](https://via.placeholder.com/400x300/1a1a1a/ffffff?text=Live+Detection) | ![Upload Analysis](https://via.placeholder.com/400x300/1a1a1a/ffffff?text=Upload+Analysis) |
-
 ## 🚀 Installation
 
 ### Prerequisites
@@ -427,3 +421,4 @@ This project is licensed under the **Educational Use License** - see the [LICENS
 ⭐ **Star this repository if you found it helpful!** ⭐
 
 </div>
+
