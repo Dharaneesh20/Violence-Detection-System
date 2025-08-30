@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Detection - ViolenceGuard AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-shield-alt"></i>
+                <h1>ViolenceGuard AI</h1>
+            </div>
+            <nav class="nav">
+                <a href="/" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    Home
+                </a>
+                <a href="/live-detection" class="nav-link">
+                    <i class="fas fa-video"></i>
+                    Live Detection
+                </a>
+                <a href="/upload-detection" class="nav-link active">
+                    <i class="fas fa-upload"></i>
+                    Upload Video
+                </a>
+            </nav>
+        </header>
+
+        <main class="main upload-detection-page">
+            <section class="page-header">
+                <h2 class="page-title">
+                    <i class="fas fa-upload"></i>
+                    Video Upload Analysis
+                </h2>
+                <p class="page-description">
+                    Upload video files for comprehensive violence detection analysis with detailed reports.
+                </p>
+            </section>
+
+            <div class="upload-container">
+                <div class="upload-section">
+                    <div class="upload-area" id="upload-area">
+                        <div class="upload-content">
+                            <div class="upload-icon">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                            </div>
+                            <h3>Drop your video here</h3>
+                            <p>or click to browse files</p>
+                            <div class="upload-formats">
+                                <span>Supported formats: MP4, AVI, MOV, WMV</span>
+                                <span>Max size: 100MB</span>
+                            </div>
+                            <input type="file" id="video-input" accept=".mp4,.avi,.mov,.wmv" hidden>
+                            <button id="browse-btn" class="browse-btn">
+                                <i class="fas fa-folder-open"></i>
+                                Browse Files
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="file-info" class="file-info hidden">
+                        <div class="file-details">
+                            <div class="file-icon">
+                                <i class="fas fa-file-video"></i>
+                            </div>
+                            <div class="file-meta">
+                                <div id="file-name" class="file-name"></div>
+                                <div id="file-size" class="file-size"></div>
+                            </div>
+                            <button id="remove-file" class="remove-file">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="upload-actions">
+                            <button id="analyze-btn" class="analyze-btn">
+                                <i class="fas fa-play"></i>
+                                Start Analysis
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="progress-section" class="progress-section hidden">
+                        <div class="progress-header">
+                            <h4>Analyzing Video...</h4>
+                            <div class="progress-status">
+                                <i class="fas fa-cog fa-spin"></i>
+                                <span id="progress-text">Processing frames...</span>
+                            </div>
+                        </div>
+                        <div class="progress-bar">
+                            <div id="progress-fill" class="progress-fill"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="results-section">
+                    <div id="analysis-results" class="analysis-results hidden">
+                        <div class="results-header">
+                            <h4>
+                                <i class="fas fa-chart-bar"></i>
+                                Analysis Results
+                            </h4>
+                            <div id="overall-verdict" class="overall-verdict">
+                                <div class="verdict-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <div class="verdict-text">
+                                    <div id="verdict-status" class="verdict-status">Safe</div>
+                                    <div id="verdict-confidence" class="verdict-confidence">Confidence: 95%</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="results-grid">
+                            <div class="result-card">
+                                <div class="result-icon">
+                                    <i class="fas fa-film"></i>
+                                </div>
+                                <div class="result-content">
+                                    <div class="result-label">Total Frames</div>
+                                    <div id="total-frames" class="result-value">0</div>
+                                </div>
+                            </div>
+
+                            <div class="result-card">
+                                <div class="result-icon">
+                                    <i class="fas fa-search"></i>
+                                </div>
+                                <div class="result-content">
+                                    <div class="result-label">Analyzed Frames</div>
+                                    <div id="analyzed-frames" class="result-value">0</div>
+                                </div>
+                            </div>
+
+                            <div class="result-card">
+                                <div class="result-icon">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                </div>
+                                <div class="result-content">
+                                    <div class="result-label">Violent Frames</div>
+                                    <div id="violent-frames" class="result-value">0</div>
+                                </div>
+                            </div>
+
+                            <div class="result-card">
+                                <div class="result-icon">
+                                    <i class="fas fa-percentage"></i>
+                                </div>
+                                <div class="result-content">
+                                    <div class="result-label">Violence %</div>
+                                    <div id="violence-percentage" class="result-value">0%</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="timeline-section">
+                            <h5>
+                                <i class="fas fa-clock"></i>
+                                Detection Timeline
+                            </h5>
+                            <div id="detection-timeline" class="detection-timeline">
+                                <!-- Timeline items will be populated by JavaScript -->
+                            </div>
+                        </div>
+
+                        <div class="export-section">
+                            <h5>
+                                <i class="fas fa-download"></i>
+                                Export Report
+                            </h5>
+                            <div class="export-actions">
+                                <button id="export-json" class="export-btn">
+                                    <i class="fas fa-file-code"></i>
+                                    JSON Report
+                                </button>
+                                <button id="export-csv" class="export-btn">
+                                    <i class="fas fa-file-csv"></i>
+                                    CSV Report
+                                </button>
+                                <button id="export-pdf" class="export-btn">
+                                    <i class="fas fa-file-pdf"></i>
+                                    PDF Report
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="error-section" class="error-section hidden">
+                        <div class="error-content">
+                            <div class="error-icon">
+                                <i class="fas fa-exclamation-circle"></i>
+                            </div>
+                            <h4>Analysis Failed</h4>
+                            <p id="error-message">An error occurred during video analysis.</p>
+                            <button id="retry-btn" class="retry-btn">
+                                <i class="fas fa-redo"></i>
+                                Try Again
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/upload_detection.js') }}"></script>
+</body>
+</html>

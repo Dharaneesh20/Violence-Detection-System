@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Violence Detection System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-shield-alt"></i>
+                <h1>ViolenceGuard AI</h1>
+            </div>
+            <nav class="nav">
+                <a href="/" class="nav-link active">
+                    <i class="fas fa-home"></i>
+                    Home
+                </a>
+                <a href="/live-detection" class="nav-link">
+                    <i class="fas fa-video"></i>
+                    Live Detection
+                </a>
+                <a href="/upload-detection" class="nav-link">
+                    <i class="fas fa-upload"></i>
+                    Upload Video
+                </a>
+            </nav>
+        </header>
+
+        <main class="main">
+            <section class="hero">
+                <div class="hero-content">
+                    <h2 class="hero-title">
+                        Advanced Violence Detection System
+                        <span class="gradient-text">Powered by AI</span>
+                    </h2>
+                    <p class="hero-description">
+                        Real-time violence detection using cutting-edge machine learning algorithms. 
+                        Monitor live video feeds or analyze uploaded content with high accuracy and reliability.
+                    </p>
+                    
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <div class="stat-number">98%</div>
+                            <div class="stat-label">Accuracy</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">< 100ms</div>
+                            <div class="stat-label">Response Time</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">Monitoring</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hero-visual">
+                    <div class="detection-preview">
+                        <div class="camera-feed">
+                            <i class="fas fa-camera"></i>
+                            <div class="pulse-ring"></div>
+                        </div>
+                        <div class="analysis-indicators">
+                            <div class="indicator safe">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Safe Environment</span>
+                            </div>
+                            <div class="indicator processing">
+                                <i class="fas fa-cog fa-spin"></i>
+                                <span>AI Processing</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="features">
+                <h3 class="section-title">Choose Detection Mode</h3>
+                
+                <div class="feature-cards">
+                    <div class="feature-card" onclick="navigateTo('/live-detection')">
+                        <div class="feature-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <h4>Live Video Detection</h4>
+                        <p>Real-time analysis of webcam feed with instant alerts and continuous monitoring.</p>
+                        <div class="feature-benefits">
+                            <span><i class="fas fa-bolt"></i> Real-time</span>
+                            <span><i class="fas fa-bell"></i> Instant Alerts</span>
+                            <span><i class="fas fa-chart-line"></i> Live Analytics</span>
+                        </div>
+                        <button class="feature-btn">
+                            Start Live Detection
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+
+                    <div class="feature-card" onclick="navigateTo('/upload-detection')">
+                        <div class="feature-icon">
+                            <i class="fas fa-upload"></i>
+                        </div>
+                        <h4>Video Upload Analysis</h4>
+                        <p>Upload and analyze video files with comprehensive frame-by-frame analysis.</p>
+                        <div class="feature-benefits">
+                            <span><i class="fas fa-file-video"></i> Multiple Formats</span>
+                            <span><i class="fas fa-microscope"></i> Detailed Analysis</span>
+                            <span><i class="fas fa-download"></i> Export Reports</span>
+                        </div>
+                        <button class="feature-btn">
+                            Upload Video
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="technology">
+                <h3 class="section-title">Powered by Advanced AI</h3>
+                <div class="tech-grid">
+                    <div class="tech-item">
+                        <i class="fas fa-brain"></i>
+                        <h5>Machine Learning</h5>
+                        <p>Random Forest algorithms with optimized feature extraction</p>
+                    </div>
+                    <div class="tech-item">
+                        <i class="fas fa-eye"></i>
+                        <h5>Computer Vision</h5>
+                        <p>Advanced image processing and motion analysis</p>
+                    </div>
+                    <div class="tech-item">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <h5>Real-time Processing</h5>
+                        <p>Optimized for low-latency detection and analysis</p>
+                    </div>
+                    <div class="tech-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <h5>High Accuracy</h5>
+                        <p>Trained on diverse datasets for reliable detection</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h6>ViolenceGuard AI</h6>
+                    <p>Advanced violence detection system for enhanced security and safety monitoring.</p>
+                </div>
+                <div class="footer-section">
+                    <h6>Features</h6>
+                    <ul>
+                        <li>Real-time Detection</li>
+                        <li>Video Analysis</li>
+                        <li>AI-Powered Alerts</li>
+                        <li>Comprehensive Reports</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h6>Technology</h6>
+                    <ul>
+                        <li>Machine Learning</li>
+                        <li>Computer Vision</li>
+                        <li>Real-time Processing</li>
+                        <li>Advanced Analytics</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ViolenceGuard AI. Advanced Security Solutions.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

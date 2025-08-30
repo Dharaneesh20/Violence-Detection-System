@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Detection - ViolenceGuard AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-shield-alt"></i>
+                <h1>ViolenceGuard AI</h1>
+            </div>
+            <nav class="nav">
+                <a href="/" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    Home
+                </a>
+                <a href="/live-detection" class="nav-link active">
+                    <i class="fas fa-video"></i>
+                    Live Detection
+                </a>
+                <a href="/upload-detection" class="nav-link">
+                    <i class="fas fa-upload"></i>
+                    Upload Video
+                </a>
+            </nav>
+        </header>
+
+        <main class="main live-detection-page">
+            <section class="page-header">
+                <h2 class="page-title">
+                    <i class="fas fa-video"></i>
+                    Live Video Detection
+                </h2>
+                <p class="page-description">
+                    Real-time violence detection from your webcam feed with instant analysis and alerts.
+                </p>
+            </section>
+
+            <div class="detection-container">
+                <div class="video-section">
+                    <div class="video-wrapper">
+                        <div id="video-container" class="video-container">
+                            <div id="video-placeholder" class="video-placeholder">
+                                <i class="fas fa-camera"></i>
+                                <h3>Camera Feed</h3>
+                                <p>Click "Start Detection" to begin live monitoring</p>
+                            </div>
+                            <img id="video-feed" class="video-feed" style="display: none;">
+                        </div>
+                        
+                        <div class="video-controls">
+                            <button id="start-btn" class="control-btn start">
+                                <i class="fas fa-play"></i>
+                                Start Detection
+                            </button>
+                            <button id="stop-btn" class="control-btn stop" style="display: none;">
+                                <i class="fas fa-stop"></i>
+                                Stop Detection
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="status-panel">
+                        <div class="status-header">
+                            <h4>Detection Status</h4>
+                            <div id="status-indicator" class="status-indicator idle">
+                                <div class="status-dot"></div>
+                                <span id="status-text">Idle</span>
+                            </div>
+                        </div>
+                        
+                        <div class="status-metrics">
+                            <div class="metric">
+                                <div class="metric-label">Current Status</div>
+                                <div id="current-status" class="metric-value safe">Safe</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-label">Confidence</div>
+                                <div id="confidence-value" class="metric-value">0%</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-label">Total Detections</div>
+                                <div id="total-detections" class="metric-value">0</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="analytics-section">
+                    <div class="analytics-panel">
+                        <h4>
+                            <i class="fas fa-chart-line"></i>
+                            Real-time Analytics
+                        </h4>
+                        
+                        <div class="chart-container">
+                            <canvas id="confidence-chart" width="400" height="200"></canvas>
+                        </div>
+                        
+                        <div class="analytics-stats">
+                            <div class="stat-item">
+                                <div class="stat-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <div class="stat-label">Session Duration</div>
+                                    <div id="session-duration" class="stat-value">00:00</div>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-icon">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <div class="stat-label">Alert Level</div>
+                                    <div id="alert-level" class="stat-value">Low</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="recent-detections">
+                        <h4>
+                            <i class="fas fa-history"></i>
+                            Recent Detections
+                        </h4>
+                        <div id="detection-log" class="detection-log">
+                            <div class="log-empty">
+                                <i class="fas fa-info-circle"></i>
+                                <p>No detections yet. Start monitoring to see results.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert-overlay" id="alert-overlay" style="display: none;">
+                <div class="alert-content">
+                    <div class="alert-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h3>Violence Detected!</h3>
+                    <p>High confidence violence detection in the video feed.</p>
+                    <div class="alert-actions">
+                        <button id="acknowledge-alert" class="alert-btn">
+                            Acknowledge
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/live_detection.js') }}"></script>
+</body>
+</html>
